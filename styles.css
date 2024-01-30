@@ -1,0 +1,49 @@
+/* Variables */
+:root {
+    --color-primary: #87582c;
+}
+
+/* General styles */
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Typography */
+h1, h2, h3 {
+    margin: 0;
+}
+
+/* Forms */
+.input-group {
+    position: relative;
+}
+
+.input-group--small {
+    width: 40%;
+}
+
+.label {
+    background: #ede1d5;
+    color: #9d7550;
+    font-size: 0.8rem;
+    left: 13px;
+    padding: 0 4px;
+    position: absolute;
+    top: -5px;
+}
+
+.input {
+    background: #ede1d5;
+    border-radius: 20px;
+    border: 1px solid var(--color-primary);
+    color: #5f6350;
+    font-size: 1rem;
+    outline: 0;
+    padding: 0.5rem 1.5rem;
+    width: 100%;
+}
