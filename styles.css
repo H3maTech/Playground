@@ -9,14 +9,26 @@ html {
 
 body {
     margin: 0;
-    padding: 1rem;
     background-color: #efefef;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.8rem;
 }
 
-/* Typography */
+/* Navigation bar */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #43281c;
+    color: #fbf2c0;
+}
 
+.hero__brand {
+    width: 30px;
+    margin-right: 0.5rem;
+}
+
+/* Box */
 .box {
     background: #eee1d5;
     padding: 0 20px 10px;
@@ -55,7 +67,42 @@ body {
     position: absolute;
     background: #eee1d5;
     color: #885a2d;
+    text-transform: uppercase;
     font-size: 1.1rem;
     top: -7px;
     left: 25px;
+}
+
+/* Item */
+.item {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-areas:
+    "qty title price"
+    ". option .";
+    justify-items: center;
+    border-bottom: 1px solid #885a2d;
+}
+
+.item__qty {
+    grid-area: qty;
+    justify-self: end;
+    padding-right: 1rem;
+}
+
+.item__title {
+    grid-area: title;
+    margin: 0;
+    justify-self: start;
+    align-self: center;
+}
+
+.item__option {
+    grid-area: option;
+    margin-top: 0;
+    justify-self: start;
+}
+
+.item__price {
+    grid-area: price;
 }
