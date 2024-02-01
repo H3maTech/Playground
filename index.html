@@ -7,7 +7,78 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-
-    </table>
+    <head>
+      <!-- TODO:What a mess! Refactor all of that! -->
+      <nav class="hero">
+        <img
+          src="https://btholt.github.io/complete-intro-to-web-dev-v3/images/coffee_masters_logo.png"
+          alt=""
+          class="hero__brand"
+        />
+        <h1 class="hero__heading">Coffee Masters</h1>
+      </nav>
+    </head>
+    <main class="order-page">
+      <div class="box order__name">
+        <h2 class="box__heading">Name</h2>
+        <div class="input-group">
+          <label class="input-group__label">Name for order</label>
+          <input type="text" class="input" />
+        </div>
+      </div>
+      <div class="box order__payment">
+        <h2 class="box__heading">Payment</h2>
+        <div class="input-group">
+          <label class="input-group__label">Card number</label>
+          <input type="text" class="input" />
+        </div>
+        <div class="input-group input-group--small">
+          <label class="input-group__label">CCV Number</label>
+          <input type="text" class="input" />
+        </div>
+      </div>
+      <section class="box order__option">
+        <h2 class="box__heading">Payment</h2>
+        <ul class="order__items">
+          <li class="item">
+            <h3 class="item__title">Cappucino</h3>
+            <p class="item__option">Light Foam</p>
+            <p class="item__qty">1x</p>
+            <p class="item__price">$6.00</p>
+          </li>
+          <li class="item">
+            <h3 class="item__title">Cappucino</h3>
+            <p class="item__option">Light Foam</p>
+            <p class="item__qty">1x</p>
+            <p class="item__price">$6.00</p>
+          </li>
+          <li class="item">
+            <h3 class="item__title">Cappucino</h3>
+            <p class="item__option">Light Foam</p>
+            <p class="item__qty">1x</p>
+            <p class="item__price">$6.00</p>
+          </li>
+        </ul>
+      </section>
+      <section class="order__total">
+        <table class="total__table">
+          <tbody>
+            <tr class="total__row">
+              <td class="total__right">Subtotal:</td>
+              <td class="total__left">$19.27</td>
+            </tr>
+            <tr class="total__row">
+              <td class="total__right">Tax:</td>
+              <td class="total__left">$0.96</td>
+            </tr>
+            <tr class="total__row">
+              <td class="total__right">Total:</td>
+              <td class="total__left">$20.23</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn">Place Order</button>
+      </section>
+    </main>
   </body>
 </html>

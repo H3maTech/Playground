@@ -1,3 +1,4 @@
+/* TODO:What a mess! Refactor this too */
 html {
     font-size: 62.5%;
     box-sizing: border-box;
@@ -33,7 +34,6 @@ body {
     background: #eee1d5;
     padding: 0 20px 10px;
     border-radius: 5px;
-    margin-bottom: 2rem;
     box-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
 }
 
@@ -41,6 +41,7 @@ body {
     color: #885a2d;
     font-size: 2rem;
     font-weight: 500;
+    text-transform: uppercase;
     margin: 0 0 3rem;
     padding-top: 0.5rem;
 }
@@ -67,10 +68,17 @@ body {
     position: absolute;
     background: #eee1d5;
     color: #885a2d;
-    text-transform: uppercase;
     font-size: 1.1rem;
     top: -7px;
     left: 25px;
+}
+
+.btn {
+    border: 0;
+    background: #deb993;
+    width: 100%;
+    padding: 1.5rem 3rem;
+    border-radius: 20px;
 }
 
 /* Item */
@@ -81,7 +89,6 @@ body {
     "qty title price"
     ". option .";
     justify-items: center;
-    border-bottom: 1px solid #885a2d;
 }
 
 .item__qty {
@@ -111,7 +118,7 @@ body {
 .total__table {
     width: 100%;
     max-width: 500px;
-    margin-bottom: 3rem;
+    margin: 0 auto 2rem;
     border-spacing: 0rem 2rem;
 }
 
@@ -121,4 +128,44 @@ body {
 
 .total__left {
     text-align: right;
+}
+
+.order__items {
+    padding-left: 0;
+}
+
+.order__items .item {
+    border-bottom: 1px solid #885a2d;
+}
+
+.order__items .item:last-child {
+    border: 0;
+}
+
+/* Sections */
+.order-page {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
+    grid-template-areas:
+    "items name"
+    "items payment"
+    "total total";
+    gap: 3rem;
+    overflow: visible;
+}
+
+.order__name {
+    grid-area: name;
+}
+
+.order__payment {
+    grid-area: payment;
+}
+
+.order__option {
+    grid-area: items;
+}
+
+.order__total {
+    grid-area: total;
 }
