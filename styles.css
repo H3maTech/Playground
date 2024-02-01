@@ -106,3 +106,19 @@ body {
 .item__price {
     grid-area: price;
 }
+
+/* Table */
+.total__table {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 3rem;
+    border-spacing: 0rem 2rem;
+}
+
+.total__table tr:last-child {
+    font-weight: 600;
+}
+
+.total__left {
+    text-align: right;
+}
