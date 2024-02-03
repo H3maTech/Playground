@@ -32,10 +32,12 @@ body {
 /* Typography */
 h1, h2, h3 {
     color: var(--color-black);
+    margin-bottom: 0;
 }
 
 h1 {
     font-weight: 800;
+    font-size: 2.5rem;
 }
 
 h2 {
@@ -59,12 +61,18 @@ h2 {
     box-shadow: 10px 10px 0 var(--color-black);
     border-radius: 15px;
     background: var(--color-white);
-    max-width: 500px;
+    max-width: 400px;
+    width: 100%;
     margin: 0 auto;
 }
 
 .card__heading {
-    text-wrap: nowrap;
+    transition: color .15s linear;
+    cursor: pointer;
+}
+
+.card__heading:hover {
+    color: var(--color-primary);
 }
 
 .card__img {
