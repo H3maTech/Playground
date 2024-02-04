@@ -1,0 +1,71 @@
+/* Variables */
+:root {
+    --color-primary: hsl(14, 45%, 36%);
+    --color-secondary: hsl(332, 51%, 32%);
+    --color-white: hsl(0, 0%, 100%);
+    --color-rose: hsl(330, 100%, 98%);
+    --color-eggshell: hsl(30, 54%, 90%);
+    --color-light-grey: hsl(30, 18%, 87%);
+    --color-wenge-brown: hsl(30, 10%, 34%);
+    --color-dark-charcoal: hsl(24, 5%, 18%);
+}
+
+/* General Style */
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Outfit', Georgia, 'Times New Roman', Times, serif;
+    color: var(--color-gray);
+    padding: 2rem;
+    background: var(--color-eggshell);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5;
+}
+
+img {
+    width: 100%;
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: var(--color-black);
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+/* List */
+.list {
+    color: var(--color-wenge-brown);
+}
+
+.item {
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.emphasized {
+    font-weight: 600;
+}
