@@ -21,15 +21,11 @@ html {
 }
 
 body {
-    font-size: 1.6rem;
-    font-family: 'Outfit', Georgia, 'Times New Roman', Times, serif;
-    color: var(--color-gray);
-    padding: 2rem;
+    font-size: 1.8rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--color-wenge-brown);
     background: var(--color-eggshell);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0;
     line-height: 1.5;
 }
 
@@ -39,17 +35,18 @@ img {
 
 /* Typography */
 h1, h2, h3 {
-    color: var(--color-black);
+    color: var(--color-dark-charcoal);
 }
 
 h1 {
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
 }
 
 h2 {
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 3rem;
+    color: var(--color-primary);
 }
 
 h3 {
@@ -61,6 +58,11 @@ h3 {
     color: var(--color-wenge-brown);
 }
 
+.list--with-border {
+    border-bottom: 1px solid var(--color-light-grey);
+    padding-bottom: 2rem;
+}
+
 .item {
     padding-left: 2rem;
     margin-bottom: 0.5rem;
@@ -68,4 +70,74 @@ h3 {
 
 .emphasized {
     font-weight: 600;
+}
+
+/* Nutrition */
+.nutrition__aspect {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    align-items: center;
+    border-bottom: 1px solid var(--color-light-grey);
+    width: 100%;
+}
+
+.nutrition__calories {
+    color: var(--color-wenge-brown);
+}
+
+.nutrition__aspect:last-child {
+    border: 0;
+}
+
+.nutrition__qty {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.wrapper {
+    background: var(--color-rose);
+    width: 100%;
+}
+
+.recipe__body {
+    padding: 1rem 3rem;
+}
+
+.prep__wrapper {
+    padding: 2rem;
+}
+
+/* preparation Section */
+.recipe__preparation {
+    padding: 2rem;
+}
+
+.preparation__heading {
+    color: var(--color-secondary);
+    font-size: 2.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 3rem 0;
+    }
+
+    .recipe__img {
+        border-radius: 15px;
+    }
+
+    .wrapper {
+        background: var(--color-rose);
+        max-width: 700px;
+        padding: 4rem;
+        border-radius: 20px;
+    }
+
+    .recipe__body {
+        padding: 0;
+    }
 }
