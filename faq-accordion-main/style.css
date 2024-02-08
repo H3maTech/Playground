@@ -1,0 +1,88 @@
+/* Variables */
+:root {
+    --color-White: hsl(0, 0%, 100%);
+    --color-light-pink: hsl(275, 100%, 97%);
+    --color-grayish-purple: hsl(292, 16%, 49%);
+    --color-dark-purple: hsl(292, 42%, 14%);
+}
+
+/* General Styles */
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: WorkSans, Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    margin: 0;
+    background: var(--color-light-pink);
+    color: var(--color-dark-purple);
+}
+
+img {
+    width: 100%;
+}
+
+/* Typography */
+h1 {
+
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+/* Card */
+.card {
+    background: var(--color-White);
+    width: 90vw;
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.card__header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+}
+
+.card__icon {
+    width: 32px;
+}
+
+/* Collapsible Section */
+.collapsible__header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 4rem;
+}
+
+.collapsible__chevron {
+    width: 24px;
+}
+
+.collapsible__content {
+    /* color: var(--color-light-pink); */
+    font-size: 1.2rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity .3s, transform .3s;
+}
+
+.collapsible--expanded .collapsible__content {
+    max-height: 100vh;
+    opacity: 1;
+}
+
+.hidden__chevron {
+    display: none;
+}
