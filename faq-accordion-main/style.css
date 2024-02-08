@@ -34,7 +34,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.8rem;
+    font-size: 2.3rem;
 }
 
 /* Card */
@@ -50,28 +50,29 @@ h2 {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 2rem;
 }
 
 .card__icon {
-    width: 32px;
+    width: 36px;
 }
 
 /* Collapsible Section */
+.collapsible {
+    margin-bottom: 3rem;
+}
 .collapsible__header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    gap: 4rem;
 }
 
 .collapsible__chevron {
-    width: 24px;
+    width: 36px;
+    margin-left: 4rem;
 }
 
 .collapsible__content {
-    /* color: var(--color-light-pink); */
-    font-size: 1.2rem;
+    color: var(--color-light-pink);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
@@ -83,6 +84,12 @@ h2 {
     opacity: 1;
 }
 
-.hidden__chevron {
+.collapsible--expanded .collapsible__plus,
+.collapsible__minus {
     display: none;
+}
+
+.collapsible--expanded .collapsible__minus,
+.collapsible__plus {
+    display: block;
 }
