@@ -1,5 +1,6 @@
 /* Variables */
 :root {
+    --color-purple: hsl(281deg 83% 54%);
     --color-White: hsl(0, 0%, 100%);
     --color-light-pink: hsl(275, 100%, 97%);
     --color-grayish-purple: hsl(292, 16%, 49%);
@@ -22,6 +23,12 @@ body {
     margin: 0;
     background: var(--color-light-pink);
     color: var(--color-dark-purple);
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
 }
 
 img {
@@ -30,11 +37,20 @@ img {
 
 /* Typography */
 h1 {
-
+    font-size: 4rem;
 }
 
 h2 {
-    font-size: 2.3rem;
+    font-size: 1.8rem;
+}
+
+/* Background */
+.faq-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
 }
 
 /* Card */
@@ -43,7 +59,6 @@ h2 {
     width: 90vw;
     padding: 2rem;
     border-radius: 10px;
-    margin: 0 auto;
 }
 
 .card__header {
@@ -52,27 +67,42 @@ h2 {
     align-items: center;
 }
 
+.card__heading {
+    margin: 0.5rem 0;
+}
+
 .card__icon {
     width: 36px;
+    margin-right: 2rem;
 }
 
 /* Collapsible Section */
 .collapsible {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
+
+.collapsible:last-child {
+    margin: 0;
+}
+
 .collapsible__header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    justify-items: center;
     align-items: center;
 }
 
+.collapsible__heading {
+    justify-self: left;
+}
+
 .collapsible__chevron {
-    width: 36px;
-    margin-left: 4rem;
+    max-width: 36px;
+    justify-self: right;
 }
 
 .collapsible__content {
-    color: var(--color-light-pink);
+    color: var(--color-grayish-purple);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
@@ -81,7 +111,8 @@ h2 {
 
 .collapsible--expanded .collapsible__content {
     max-height: 100vh;
-    opacity: 1;
+    opacity: .8;
+    margin-bottom: 3rem;
 }
 
 .collapsible--expanded .collapsible__plus,
@@ -92,4 +123,25 @@ h2 {
 .collapsible--expanded .collapsible__minus,
 .collapsible__plus {
     display: block;
+}
+
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 5rem;
+    }
+
+    .card {
+        max-width: 650px;
+        padding: 4rem;
+    }
+
+    .card__icon {
+        width: 42px;
+        transition: transform .3s ease;
+    }
+
+    .collapsible__heading:hover {
+        color: var(--color-purple);
+        cursor: pointer;
+    }
 }
