@@ -73,3 +73,51 @@ body {
 .btn--primary:hover {
     background: linear-gradient(0deg, var(--color-circle-persian-blue), var(--color-circle-violet-blue));
 }
+
+.item {
+    display: flex;
+    color: black;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.item__name > img {
+    vertical-align: middle;
+}
+
+.item__max {
+    opacity: .4;
+}
+
+.item--reaction {
+    background-color: hsl(0, 100%, 67%, 0.1);
+}
+.item--reaction .item__title {
+    color: var(--color-light-red);
+}
+
+.item--memory {
+    background-color: hsl(39, 100%, 56%, 0.1);
+}
+
+.item--memory .item__title {
+    color: var(--color-orangey-yellow);
+}
+
+.item--verbal {
+    background-color: hsl(166, 100%, 37%, 0.1);
+}
+
+.item--verbal .item__title {
+    color: teal;
+}
+
+.item--visual {
+    background-color: hsl(234, 85%, 45%, 0.1);
+}
+
+.item--visual .item__title{
+    color: var(--color-cobalt-blue);
+}
