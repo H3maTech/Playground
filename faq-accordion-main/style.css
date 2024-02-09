@@ -145,11 +145,16 @@ h2 {
 
     .card__icon {
         width: 42px;
-        transition: transform .3s ease;
+        transition: transform 1s ease;
     }
 
     .collapsible__heading:hover {
         color: var(--color-purple);
         cursor: pointer;
+    }
+
+    .card__header:hover .card__icon {
+    cursor: pointer;
+    transform: rotate(2turn) scale(1.5);
     }
 }
