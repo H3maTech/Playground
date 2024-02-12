@@ -34,10 +34,49 @@ body {
     color: white;
 }
 
+/* Cards */
+.card {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.card__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, var(--color-bg-light-slate-blue), var(--color-bg-light-royal-blue));
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    text-align: center;
+}
+
+.card__heading {
+    margin-bottom: 0;
+}
+
+.card__desc {
+    margin: 1rem 0;
+}
+
+.card__content {
+    justify-self: start;
+    color: black;
+    width: 100%;
+}
+
+/* Block */
+.block {
+    padding: 0 2rem;
+}
+
 /* Circle */
 .circle {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     background: linear-gradient(0deg, var(--color-circle-persian-blue), var(--color-circle-violet-blue));
     border-radius: 50%;
     display: flex;
@@ -48,7 +87,7 @@ body {
 
 .circle__number {
     font-size: 5rem;
-    margin: 1rem 0 0;
+    margin: 0.5rem 0 0;
 }
 
 .circle__max {
@@ -74,6 +113,7 @@ body {
     background: linear-gradient(0deg, var(--color-circle-persian-blue), var(--color-circle-violet-blue));
 }
 
+/* Items */
 .item {
     display: flex;
     color: black;
@@ -81,6 +121,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+    width: 100%;
+    margin: 0 0 1rem 0;
 }
 
 .item__name > img {
@@ -120,4 +162,11 @@ body {
 
 .item--visual .item__title{
     color: var(--color-cobalt-blue);
+}
+
+/* Lists */
+.list {
+    width: 100%;
+    list-style: none;
+    padding: 0;
 }
