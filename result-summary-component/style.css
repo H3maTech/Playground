@@ -104,3 +104,15 @@ body {
 .grayout {
     opacity: .5;
 }
+
+/* Buttons */
+.btn {
+    border: 0;
+    background: var(--color-dark-gray-blue);
+    padding: 1rem 2rem;
+    width: 100%;
+    color: var(--color-pale-blue);
+    font-size: 1.8rem;
+    cursor: pointer;
+    border-radius: 30px;
+}
