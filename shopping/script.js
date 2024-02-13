@@ -26,9 +26,9 @@ function displayItems() {
     const html = Array.from(items).map(item => {
         return `
             <li class="shopping-item">
-                <input type="checkbox" value="${item.id}">
+                <input type="checkbox" value="${item.id}" ${item.complete ? 'checked' : ''}>
                 <span class="itemName">${item.name}</span>
-                <button class="btn btn--delete" aria-label="Remove ${item.name}">
+                <button class="btn btn--delete" value="${item.id}" aria-label="Remove ${item.name}">
                     &times;
                 </button>
             </li>
@@ -52,8 +52,33 @@ function restoreFromLocalStorage() {
     }
 }
 
+function deleteItem(id) {
+    console.log('Deleting Item', id);
+    // Update our list exclude this one
+    items = items.filter(item => item.id !== id)
+    list.dispatchEvent(new CustomEvent('itemUpdated'))
+}
+
+function markAsComplete(id) {
+    console.log('Marking as complete', id);
+    const itemRef = items.find(item => item.id === id)
+    itemRef.complete = !itemRef.complete;
+    list.dispatchEvent(new CustomEvent('itemUpdated'))
+}
+
 shoppingForm.addEventListener('submit', handleSubmit);
 list.addEventListener('itemUpdated', displayItems);
 list.addEventListener('itemUpdated', mirrorToLocalStorage);
+// Event Delegation: We listen for the click on the list <ul>but then delegate the click over the button if that is what was clicked</ul>
+list.addEventListener('click', function(e) {
+    const id = parseInt(e.target.value);
+    if (e.target.matches('button')) {
+        deleteItem(id);
+    }
+
+    if (e.target.matches('input[type="checkbox"]')) {
+        markAsComplete(id);
+    }
+});
 
 restoreFromLocalStorage();

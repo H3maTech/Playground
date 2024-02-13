@@ -61,6 +61,7 @@ body {
   box-shadow: 0 0 5px 1px lightpink;
 }
 
+/* Buttons */
 .btn {
   border: 1px solid var(--pink);
   background: transparent;
@@ -91,7 +92,7 @@ body {
   right: 0;
   bottom: 0;
   transform: translateX(-101%);
-  transition: transform .5s ease;
+  transition: transform .3s ease;
   z-index: -1;
 }
 
