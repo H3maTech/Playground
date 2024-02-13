@@ -14,7 +14,15 @@
         <button class="btn" type="submit">+ Add Item</button>
       </form>
 
-      <ul class="list"></ul>
+      <ul class="list">
+        <li class="shopping-item">
+          <input value="id" type="checkbox" checked />
+          <span class="itemName">🥩 Meat</span>
+          <button class="btn btn--delete" aria-label="Remove ${item.name}">
+            &times;
+          </button>
+        </li>
+      </ul>
     </section>
 
     <script src="script.js"></script>
