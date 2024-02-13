@@ -36,6 +36,10 @@ body {
     background-color: #2e2e2e;
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 21.184c.13.357.264.72.402 1.088l.661 1.768C4.653 33.64 6 39.647 6 50c0 10.271-1.222 15.362-4.928 24.629-.383.955-.74 1.869-1.072 2.75v6.225c.73-2.51 1.691-5.139 2.928-8.233C6.722 65.888 8 60.562 8 50c0-10.626-1.397-16.855-5.063-26.66l-.662-1.767C1.352 19.098.601 16.913 0 14.85v6.335zm20 0C17.108 13.258 16 8.077 16 0h2c0 5.744.574 9.951 2 14.85v6.334zm0 56.195c-2.966 7.86-4 13.123-4 22.621h2c0-6.842.542-11.386 2-16.396v-6.225zM6 0c0 8.44 1.21 13.718 4.402 22.272l.661 1.768C14.653 33.64 16 39.647 16 50c0 10.271-1.222 15.362-4.928 24.629C7.278 84.112 6 89.438 6 100h2c0-10.271 1.222-15.362 4.928-24.629C16.722 65.888 18 60.562 18 50c0-10.626-1.397-16.855-5.063-26.66l-.662-1.767C9.16 13.223 8 8.163 8 0H6z' fill='%23fff' fill-rule='nonzero' fill-opacity='.1' opacity='.349'/%3E%3C/svg%3E%0A");
     background-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 /* Typography */
@@ -67,7 +71,6 @@ h3 {
 
 .circle__result {
     margin: 2rem 0 0;
-    font-size: 5rem;
 }
 
 .circle__max {
@@ -127,36 +130,15 @@ h3 {
 /* Buttons */
 .btn {
     border: 0;
-    background-color: transparent;
+    background-color: var(--color-dark-gray-blue);
     padding: 1rem 2rem;
     width: 100%;
-    color: var(--color-dark-gray-blue);
+    color: var(--color-White);
     border: 1px solid var(--color-dark-gray-blue);
     font-size: 1.8rem;
     cursor: pointer;
     border-radius: 30px;
-    position: relative;
-    /* overflow: hidden; */
-}
-
-.btn::before {
-    content: '';
-    width: 100%;
-    height: 100%;
-    background: var(--color-dark-gray-blue);
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(-100%);
-    transition: transform .15s ease;
-}
-
-.btn::before:hover {
-    transform: translateX(0);
-}
-
-.btn:hover {
-    color: var(--color-White);
+    transition: background-color .3s ease;
 }
 
 /* Cards */
@@ -205,6 +187,10 @@ h3 {
 }
 
 @media screen and (min-width: 768px) {
+    h1 {
+        font-size: 6rem;
+    }
+
     .grid--1x2 {
         grid-template-columns: 1fr 1fr;
     }
@@ -212,6 +198,7 @@ h3 {
     .card {
         max-width: 600px;
         border-radius: 20px;
+        padding-bottom: 0;
     }
 
     .card__header {
@@ -224,10 +211,20 @@ h3 {
     }
 
     .card__content {
+        margin: auto;
+    }
 
+    .card__content .list {
+        margin: 3rem 0;
     }
 
     .block {
         max-width: 240px;
+    }
+
+    .circle {
+        width: 160px;
+        height: 160px;
+        margin-top: 3rem;
     }
 }
