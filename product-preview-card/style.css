@@ -17,4 +17,11 @@ html {
 
 body {
     font-size: 1.4rem;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+}
+
+h1 {
+    font-family: Fraunces, 'Times New Roman', Times, serif;
+    font-weight: 700;
 }
