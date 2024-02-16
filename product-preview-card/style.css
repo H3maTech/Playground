@@ -1,11 +1,15 @@
 :root {
     --color-primary: hsl(158, 36%, 37%);
     --color-secondary: hsl(30, 38%, 92%);
+
     --color-dark-blue: hsl(212, 21%, 14%);
     --color-grayish-blue: hsl(228, 12%, 48%);
     --color-white: hsl(0, 0%, 100%);
+
+    --color-bg: hsl(155deg 43% 18%);
 }
 
+/* General Styles */
 html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -19,9 +23,110 @@ body {
     font-size: 1.4rem;
     font-family: Montserrat, Arial, Helvetica, sans-serif;
     font-weight: 500;
+    background-color: var(--color-secondary);
+    color: var(--color-grayish-blue);
+    margin: 0;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
+img {
+    width: 100%;
+}
+
+/* Typography */
 h1 {
     font-family: Fraunces, 'Times New Roman', Times, serif;
     font-weight: 700;
+    color: var(--color-dark-blue);
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-family: Fraunces, 'Times New Roman', Times, serif;
+    font-size: 3rem;
+}
+
+p {
+    line-height: 1.5;
+}
+
+/* Cards */
+.card {
+    background-color: var(--color-white);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card__tagline {
+    margin-top: 0;
+}
+
+.card__content {
+    padding: 2rem 3rem;
+}
+
+.card__tagline {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.card__heading {
+    margin: 0;
+}
+
+.card__price {
+    color: var(--color-primary);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.card__price::after {
+    content: '$169.99';
+    color: var(--color-grayish-blue);
+    text-decoration: line-through;
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    margin-left: 2rem;
+    opacity: .7;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    background-color: var(--color-primary);
+    font-weight: 500;
+    font-size: 1.8rem;
+    border: 0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem;
+    color: white;
+}
+
+.btn__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 1.2rem;
+}
+
+.btn:hover {
+    background-color: var(--color-bg);
+}
+
+@media screen and (min-width: 600px) {
+    .card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 600px;
+        align-items: center;
+    }
 }
