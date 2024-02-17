@@ -11,7 +11,6 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%;
-    font-family: Overpass, Arial, Helvetica, sans-serif;
 }
 
 *, *::before, *::after {
@@ -19,6 +18,7 @@ html {
 }
 
 body {
+    font-family: Overpass, Arial, Helvetica, sans-serif;
     font-size: 1.5rem;
     background: var(--very-dark-blue);
     color: var(--white);
@@ -29,6 +29,7 @@ body {
 .circle {
     width: 50px;
     height: 50px;
+    display: inline-block;
     background-color: var(--darkish-grey);
     border-radius: 100%;
     display: flex;
@@ -52,6 +53,27 @@ body {
 .number {
     margin-top: 2px;
     font-size: 2rem;
+}
+
+/* Buttons */
+.btn {
+    border: 0;
+    background-color: var(--color-primary);
+    padding: 1rem;
+    width: 100%;
+    border-radius: 20px;
+    color: var(--white);
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color .15s, color .15s;
+    font-family: inherit;
+}
+
+.btn:hover {
+    background-color: var(--white);
+    color: var(--color-primary);
 }
 
 /* Utilities */
