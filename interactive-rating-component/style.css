@@ -52,8 +52,7 @@ h1 {
     cursor: pointer;
 }
 
-.circle--rating:hover,
-.circle--rating:focus {
+.circle--rating:hover {
     background-color: var(--color-primary);
     color: var(--white);
     outline: 0;
