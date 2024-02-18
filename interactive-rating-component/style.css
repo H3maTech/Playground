@@ -89,7 +89,7 @@ h1 {
 .card {
     background-color: var(--dark-blue);
     padding: 2.5rem;
-    border-radius: 15px;
+    border-radius: 30px;
     max-width: 360px;
     height: 380px;
 }
@@ -122,7 +122,7 @@ h1 {
     list-style: none;
     padding: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 3rem 0 2.5rem;
 }
 
@@ -130,7 +130,7 @@ h1 {
 .badge {
     background-color: var(--darkish-grey);
     border-radius: 20px;
-    padding: 0.7rem 1rem;
+    padding: 0.7rem 1.5rem;
     margin: 2.5rem 0;
 }
 
@@ -144,4 +144,26 @@ h1 {
 .clicked {
     background-color: var(--light-grey);
     color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+    .card {
+        max-width: 420px;
+        height: 430px;
+        padding: 4rem;
+    }
+
+    .card__heading {
+        font-size: 3rem;
+        margin-top: 3.5rem;
+    }
+
+    .list {
+        margin: 3.5rem 0 ;
+    }
+
+    .badge {
+        margin: 3.5rem 0;
+        padding: 0.7rem 2rem;
+    }
 }
