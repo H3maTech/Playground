@@ -87,20 +87,35 @@ h1 {
 
 /* Cards */
 .card {
-    background-color: hsl(218deg 25% 13%);
+    background-color: var(--dark-blue);
     padding: 2.5rem;
     border-radius: 15px;
     max-width: 360px;
     height: 380px;
 }
 
+.card--thanks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card--thanks .card__heading {
+    margin: 0 0 1.5rem;
+}
+
 .card__heading {
-    margin: 2rem 0 1.8rem;
+    margin: 2rem 0;
 }
 
 .card__desc {
     color: var(--light-grey);
+    margin: 0;
 }
+
+
 
 /* Lists */
 .list {
@@ -109,6 +124,20 @@ h1 {
     display: flex;
     justify-content: space-between;
     margin: 3rem 0 2.5rem;
+}
+
+/* Badges */
+.badge {
+    background-color: var(--darkish-grey);
+    border-radius: 20px;
+    padding: 0.7rem 1rem;
+    margin: 2.5rem 0;
+}
+
+.badge__text {
+    color: var(--color-primary);
+    margin: 0;
+    transform: translateY(2px);
 }
 
 /* Utilities */
