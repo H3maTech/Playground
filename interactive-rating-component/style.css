@@ -4,7 +4,7 @@
     --light-grey: hsl(217, 12%, 63%);
     --medium-grey: hsl(216, 12%, 54%);
     --darkish-grey: hsl(217deg 19% 19%);
-    --dark-blue: hsl(213, 19%, 18%);
+    --dark-blue: hsl(218deg 25% 13%);
     --very-dark-blue: hsl(216, 12%, 8%);
 }
 
@@ -23,6 +23,15 @@ body {
     background: var(--very-dark-blue);
     color: var(--white);
     font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+
+}
+
+h1 {
+    font-size: 2.5rem;
 }
 
 /* Circle */
@@ -74,6 +83,32 @@ body {
 .btn:hover {
     background-color: var(--white);
     color: var(--color-primary);
+}
+
+/* Cards */
+.card {
+    background-color: hsl(218deg 25% 13%);
+    padding: 2.5rem;
+    border-radius: 15px;
+    max-width: 360px;
+    height: 380px;
+}
+
+.card__heading {
+    margin: 2rem 0 1.8rem;
+}
+
+.card__desc {
+    color: var(--light-grey);
+}
+
+/* Lists */
+.list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem 0 2.5rem;
 }
 
 /* Utilities */
