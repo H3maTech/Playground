@@ -1,0 +1,33 @@
+:root {
+    --color-very-dark-blue: hsl(233, 47%, 7%);
+    --color-dark-desaturated-blue: hsl(244, 38%, 16%);
+    --color-soft-violet: hsl(277, 64%, 61%);
+
+    --color-white: hsl(0, 0%, 100%);
+    --color-slightly-transparent-white: hsla(0, 0%, 100%, 0.75);
+    --color-slightly-transparent-white: hsla(0, 0%, 100%, 0.6);
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.5rem;
+    font-family: 'Lexend Deca', Arial, Helvetica, sans-serif;
+    background-color: var(--color-very-dark-blue);
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+img {
+    width: 100%;
+}
+
