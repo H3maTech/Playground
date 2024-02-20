@@ -13,9 +13,18 @@
     <title>State Card</title>
   </head>
   <body>
-    <section class="card">
+    <section class="card grid--1x2">
       <div class="card__header">
-        <img class="card__img" src="images/image-header-mobile.jpg" alt="" />
+        <img
+          class="card__product"
+          src="images/image-header-mobile.jpg"
+          alt=""
+          srcset="
+            images/image-header-mobile.jpg  300w,
+            images/image-header-desktop.jpg 768w
+          "
+          sizes="(max-width: 600px) 100vw, (max-width: 768px) 80vw, 100vw"
+        />
       </div>
       <div class="card__content">
         <h1 class="card__heading">
