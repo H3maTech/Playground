@@ -77,6 +77,11 @@ img {
     margin: 0 0 6rem;
 }
 
+.card__list {
+    list-style: none;
+    padding: 0;
+}
+
 .card__item {
     margin: 4rem 0 1rem;
 }
@@ -111,5 +116,19 @@ img {
 
     .card__header {
         order: 2;
+    }
+
+    .card__desc {
+        margin: 0;
+    }
+
+    .card__list {
+        display: flex;;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card__item h2 {
+        margin-bottom: 0;
     }
 }
