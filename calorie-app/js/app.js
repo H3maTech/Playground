@@ -102,46 +102,29 @@ class Workout {
 class App {
     constructor() {
         this.tracker = new CalorieTracker();
-        document.querySelector('#meal-form').addEventListener('submit', this.#newMeal.bind(this))
-        document.querySelector('#workout-form').addEventListener('submit', this.#newWorkout.bind(this))
+        document.querySelector('#meal-form').addEventListener('submit', this.#newItem.bind(this, 'meal'))
+        document.querySelector('#workout-form').addEventListener('submit', this.#newItem.bind(this, 'workout'))
     }
 
-    #newMeal(e) {
+    #newItem(type, e) {
         e.preventDefault();
 
-        const name = document.querySelector('#meal-name')
-        const calories = document.querySelector('#meal-calories')
-        // TODO: Validate inputs
+        const name = document.querySelector(`#${type}-name`)
+        const calories = document.querySelector(`#${type}-calories`)
+
         if (name.value === '' || calories.value === '' || name.value === ' ') {
             alert('Please fill in all fields');
             return;
         }
 
-        this.tracker.addMeal(new Meal(name.value, +calories.value));
+        type === 'meal'
+        ? this.tracker.addMeal(new Meal(name.value, +calories.value))
+        : this.tracker.addWorkout(new Workout(name.value, +calories.value));
+
         name.value = '';
         calories.value = '';
-        const collapseMeal = document.querySelector('#collapse-meal');
-        const bsCollapse = new bootstrap.Collapse(collapseMeal, {
-            toggle: true
-        });
-    }
-
-    #newWorkout(e) {
-        e.preventDefault();
-
-        const name = document.querySelector('#workout-name')
-        const calories = document.querySelector('#workout-calories')
-        // TODO: Validate inputs
-        if (name.value === '' || calories.value === '' || name.value === ' ') {
-            alert('Please fill in all fields');
-            return;
-        }
-
-        this.tracker.addWorkout(new Workout(name.value, +calories.value));
-        name.value = '';
-        calories.value = '';
-        const collapseWorkout = document.querySelector('#collapse-workout');
-        const bsCollapse = new bootstrap.Collapse(collapseWorkout, {
+        const collapseItem = document.querySelector(`#collapse-${type}`);
+        new bootstrap.Collapse(collapseItem, {
             toggle: true
         });
     }
