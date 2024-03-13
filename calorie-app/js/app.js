@@ -67,7 +67,12 @@ class CalorieTracker {
         }
     }
 
-
+    #displayCaloriesProgress() {
+        const progressEl = document.querySelector('#calorie-progress');
+        const percentage = (this.#totalCalories / this.#calorieLimit) * 100;
+        const width = Math.min(percentage, 100);
+        progressEl.style.width = `${width}%`;
+    }
 
     #render() {
         this.#displayCaloriesTotal();
