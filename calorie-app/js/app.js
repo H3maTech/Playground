@@ -126,7 +126,25 @@ class App {
         });
     }
 
+    #newWorkout(e) {
+        e.preventDefault();
 
+        const name = document.querySelector('#workout-name')
+        const calories = document.querySelector('#workout-calories')
+        // TODO: Validate inputs
+        if (name.value === '' || calories.value === '' || name.value === ' ') {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        this.tracker.addWorkout(new Workout(name.value, +calories.value));
+        name.value = '';
+        calories.value = '';
+        const collapseWorkout = document.querySelector('#collapse-workout');
+        const bsCollapse = new bootstrap.Collapse(collapseWorkout, {
+            toggle: true
+        });
+    }
 }
 
 const app = new App()
