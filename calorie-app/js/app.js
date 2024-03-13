@@ -35,6 +35,15 @@ class CalorieTracker {
         this.#render()
     }
 
+    removeWorkout(id) {
+        const index = this.#workouts.findIndex((workout) => workout.id === id);
+        if (index !== -1) {
+            this.#totalCalories += this.#workouts[index].calories
+            this.#workouts.splice(index, 1);
+            this.#render();
+        }
+    }
+
     #displayCaloriesTotal() {
         const totalCaloriesEl = document.querySelector('#calories-total');
         totalCaloriesEl.innerHTML = this.#totalCalories;
