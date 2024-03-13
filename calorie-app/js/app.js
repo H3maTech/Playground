@@ -99,6 +99,29 @@ class CalorieTracker {
         mealsEl.appendChild(mealEl);
     }
 
+    #displayNewWorkout(workout) {
+        const WorkoutsEl = document.querySelector('#workout-items');
+        const WorkoutEl = document.createElement('div');
+        WorkoutEl.classList.add('card', 'my-2');
+        WorkoutEl.setAttribute('data-id', workout.id);
+        WorkoutEl.innerHTML = `
+        <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+            <h4 class="mx-1">${workout.name}</h4>
+            <div
+                class="fs-1 bg-secondary text-white text-center rounded-2 px-2 px-sm-5">
+                ${workout.calories}
+            </div>
+            <button class="delete btn btn-danger btn-sm mx-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            </div>
+        </div>
+        `;
+
+        WorkoutsEl.appendChild(WorkoutEl);
+    }
+
     #render() {
         this.#displayCaloriesTotal();
         this.#displayCaloriesConsumed();
