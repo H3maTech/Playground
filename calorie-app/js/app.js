@@ -149,6 +149,8 @@ class App {
         document.querySelector('#workout-form').addEventListener('submit', this.#newItem.bind(this, 'workout'))
         document.querySelector('#meal-items').addEventListener('click', this.#removeItem.bind(this, 'meal'));
         document.querySelector('#workout-items').addEventListener('click', this.#removeItem.bind(this, 'workout'));
+        document.querySelector('#filter-meals').addEventListener('keyup', this.#filterItems.bind(this, 'meal'))
+        document.querySelector('#filter-workouts').addEventListener('keyup', this.#filterItems.bind(this, 'workout'))
     }
 
     #newItem(type, e) {
@@ -186,6 +188,17 @@ class App {
                 item.remove();
             }
         }
+    }
+
+    #filterItems(type, e) {
+        const text = e.target.value.toLowerCase();
+        document.querySelectorAll(`#${type}-items .card`).forEach(item => {
+            const name = item.firstElementChild.firstElementChild.textContent;
+
+            name.toLowerCase().indexOf(text) !== -1
+            ? item.style.display = 'block'
+            : item.style.display = 'none';
+        })
     }
 }
 
