@@ -51,6 +51,12 @@ class CalorieTracker {
         this.#render()
     }
 
+    setLimit(calorieLimit) {
+        this.#calorieLimit = calorieLimit;
+        this.#displayCaloriesLimit();
+        this.#render();
+    }
+
     #displayCaloriesTotal() {
         const totalCaloriesEl = document.querySelector('#calories-total');
         totalCaloriesEl.innerHTML = this.#totalCalories;
@@ -152,13 +158,30 @@ class Workout {
 class App {
     constructor() {
         this.tracker = new CalorieTracker();
-        document.querySelector('#meal-form').addEventListener('submit', this.#newItem.bind(this, 'meal'))
-        document.querySelector('#workout-form').addEventListener('submit', this.#newItem.bind(this, 'workout'))
-        document.querySelector('#meal-items').addEventListener('click', this.#removeItem.bind(this, 'meal'));
-        document.querySelector('#workout-items').addEventListener('click', this.#removeItem.bind(this, 'workout'));
-        document.querySelector('#filter-meals').addEventListener('keyup', this.#filterItems.bind(this, 'meal'))
-        document.querySelector('#filter-workouts').addEventListener('keyup', this.#filterItems.bind(this, 'workout'))
-        document.querySelector('#reset').addEventListener('click', this.#reset.bind(this));
+        document
+            .querySelector('#meal-form')
+            .addEventListener('submit', this.#newItem.bind(this, 'meal'))
+        document
+            .querySelector('#workout-form')
+            .addEventListener('submit', this.#newItem.bind(this, 'workout'))
+        document
+            .querySelector('#meal-items')
+            .addEventListener('click', this.#removeItem.bind(this, 'meal'));
+        document
+            .querySelector('#workout-items')
+            .addEventListener('click', this.#removeItem.bind(this, 'workout'));
+        document
+            .querySelector('#filter-meals')
+            .addEventListener('keyup', this.#filterItems.bind(this, 'meal'))
+        document
+            .querySelector('#filter-workouts')
+            .addEventListener('keyup', this.#filterItems.bind(this, 'workout'))
+        document
+            .querySelector('#reset')
+            .addEventListener('click', this.#reset.bind(this));
+        document
+            .querySelector('#limit-form')
+            .addEventListener('submit', this.#setLimit.bind(this));
     }
 
     #newItem(type, e) {
@@ -215,6 +238,21 @@ class App {
         document.querySelector('#workout-items').innerHTML = '';
         document.querySelector('#filter-meals').value = '';
         document.querySelector('#filter-workouts').value = '';
+    }
+
+    #setLimit(e) {
+        e.preventDefault();
+        const limit = document.querySelector('#limit');
+        if (limit.value === '') {
+            alert('Please add a limit');
+            return;
+        }
+
+        this.tracker.setLimit(+limit.value);
+        limit.value = '';
+        const modalEl = document.querySelector('#limit-modal');
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        modal.hide();
     }
 }
 
