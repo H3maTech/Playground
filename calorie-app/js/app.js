@@ -44,6 +44,13 @@ class CalorieTracker {
         }
     }
 
+    reset() {
+        this.#totalCalories = 0;
+        this.#meals = [];
+        this.#workouts = [];
+        this.#render()
+    }
+
     #displayCaloriesTotal() {
         const totalCaloriesEl = document.querySelector('#calories-total');
         totalCaloriesEl.innerHTML = this.#totalCalories;
@@ -151,6 +158,7 @@ class App {
         document.querySelector('#workout-items').addEventListener('click', this.#removeItem.bind(this, 'workout'));
         document.querySelector('#filter-meals').addEventListener('keyup', this.#filterItems.bind(this, 'meal'))
         document.querySelector('#filter-workouts').addEventListener('keyup', this.#filterItems.bind(this, 'workout'))
+        document.querySelector('#reset').addEventListener('click', this.#reset.bind(this));
     }
 
     #newItem(type, e) {
@@ -199,6 +207,14 @@ class App {
             ? item.style.display = 'block'
             : item.style.display = 'none';
         })
+    }
+
+    #reset() {
+        this.tracker.reset();
+        document.querySelector('#meal-items').innerHTML = '';
+        document.querySelector('#workout-items').innerHTML = '';
+        document.querySelector('#filter-meals').value = '';
+        document.querySelector('#filter-workouts').value = '';
     }
 }
 
