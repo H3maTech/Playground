@@ -83,5 +83,50 @@ class CalorieTracker {
     }
 }
 
+class Meal {
+    constructor(name, calories) {
+        this.id = Math.random().toString(16).slice(2);
+        this.name = name;
+        this.calories = calories;
+    }
+}
+
+class Workout {
+    constructor(name, calories) {
+        this.id = Math.random().toString(16).slice(2);
+        this.name = name;
+        this.calories = calories;
+    }
+}
+
+class App {
+    constructor() {
+        this.tracker = new CalorieTracker();
+        document.querySelector('#meal-form').addEventListener('submit', this.#newMeal.bind(this))
+        document.querySelector('#workout-form').addEventListener('submit', this.#newWorkout.bind(this))
+    }
+
+    #newMeal(e) {
+        e.preventDefault();
+
+        const name = document.querySelector('#meal-name')
+        const calories = document.querySelector('#meal-calories')
+        // TODO: Validate inputs
+        if (name.value === '' || calories.value === '' || name.value === ' ') {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        this.tracker.addMeal(new Meal(name.value, +calories.value));
+        name.value = '';
+        calories.value = '';
+        const collapseMeal = document.querySelector('#collapse-meal');
+        const bsCollapse = new bootstrap.Collapse(collapseMeal, {
+            toggle: true
+        });
+    }
 
 
+}
+
+const app = new App()
