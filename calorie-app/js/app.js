@@ -19,6 +19,7 @@ class CalorieTracker {
         this.#render()
     }
 
+
     addWorkout(workout) {
         this.#workouts.push(workout);
         this.#totalCalories -= workout.calories;
@@ -129,6 +130,8 @@ class App {
         this.tracker = new CalorieTracker();
         document.querySelector('#meal-form').addEventListener('submit', this.#newItem.bind(this, 'meal'))
         document.querySelector('#workout-form').addEventListener('submit', this.#newItem.bind(this, 'workout'))
+        document.querySelector('#meal-items').addEventListener('click', this.#removeItem.bind(this, 'meal'));
+        document.querySelector('#workout-items').addEventListener('click', this.#removeItem.bind(this, 'workout'));
     }
 
     #newItem(type, e) {
@@ -152,6 +155,21 @@ class App {
         new bootstrap.Collapse(collapseItem, {
             toggle: true
         });
+    }
+
+    #removeItem(type, e) {
+        if (e.target.matches('.delete') || e.target.matches('.fa-xmark')) {
+            if (confirm('Are you sure?')) {
+                const item = e.target.closest('.card');
+
+                console.log(itemId);
+                type === 'meal'
+                ? this.tracker.removeMeal(item.dataset.id)
+                : this.tracker.removeWorkout(item.dataset.id);
+
+                item.remove();
+            }
+        }
     }
 }
 
