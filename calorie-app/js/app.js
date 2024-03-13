@@ -19,6 +19,14 @@ class CalorieTracker {
         this.#render()
     }
 
+    removeMeal(id) {
+        const index = this.#meals.findIndex((meal) => meal.id === id);
+        if (index !== -1) {
+            this.#totalCalories -= this.#meals[index].calories
+            this.#meals.splice(index, 1);
+            this.#render();
+        }
+    }
 
     addWorkout(workout) {
         this.#workouts.push(workout);
@@ -162,7 +170,6 @@ class App {
             if (confirm('Are you sure?')) {
                 const item = e.target.closest('.card');
 
-                console.log(itemId);
                 type === 'meal'
                 ? this.tracker.removeMeal(item.dataset.id)
                 : this.tracker.removeWorkout(item.dataset.id);
