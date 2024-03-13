@@ -24,6 +24,32 @@ class CalorieTracker {
         this.#render()
     }
 
+    #displayCaloriesTotal() {
+        const totalCaloriesEl = document.querySelector('#calories-total');
+        totalCaloriesEl.innerHTML = this.#totalCalories;
+    }
+
+    #displayCaloriesLimit() {
+        const calorieLimitEl = document.querySelector('#calories-limit');
+        calorieLimitEl.innerHTML = this.#calorieLimit;
+    }
+
+    #displayCaloriesConsumed() {
+        const caloriesConsumedEl = document.querySelector('#calories-consumed');
+        const consumed = this.#meals.reduce((accumulator, meal) => accumulator + meal.calories, 0);
+        caloriesConsumedEl.innerHTML = consumed;
+    }
+
+    #displayCaloriesBurned() {
+        const caloriesBurnedEl = document.querySelector('#calories-burned');
+        const burned = this.#workouts.reduce((accumulator, meal) => accumulator + meal.calories, 0);
+        caloriesBurnedEl.innerHTML = burned
+    }
+
+
+
+
+
     #render() {
         this.#displayCaloriesTotal();
         this.#displayCaloriesConsumed();
