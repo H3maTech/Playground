@@ -2,8 +2,8 @@
 class CalorieTracker {
     #calorieLimit = Storage.getCalorieLimit();
     #totalCalories = Storage.getTotalCalories(0);
-    #meals = [];
-    #workouts = [];
+    #meals = Storage.getItems('meals');
+    #workouts = Storage.getItems('workouts');
 
     constructor() {
         this.#displayCaloriesTotal();
@@ -17,6 +17,7 @@ class CalorieTracker {
         this.#meals.push(meal);
         this.#totalCalories += meal.calories;
         Storage.updateTotalCalories(this.#totalCalories);
+        Storage.saveMeal(meal);
         this.#displayNewItem(meal, 'meal');
         this.#render()
     }
@@ -35,6 +36,7 @@ class CalorieTracker {
         this.#workouts.push(workout);
         this.#totalCalories -= workout.calories;
         Storage.updateTotalCalories(this.#totalCalories);
+        Storage.saveWorkout(workout);
         this.#displayNewItem(workout, 'workout');
         this.#render()
     }
@@ -61,6 +63,11 @@ class CalorieTracker {
         Storage.setCalorieLimit(calorieLimit);
         this.#displayCaloriesLimit();
         this.#render();
+    }
+
+    loadItems() {
+        this.#meals.forEach(meal => this.#displayNewItem(meal, 'meal'));
+        this.#workouts.forEach(workout => this.#displayNewItem(workout, 'workout'));
     }
 
     #displayCaloriesTotal() {
@@ -181,14 +188,37 @@ class Storage {
     static updateTotalCalories(calories) {
         localStorage.setItem('totalCalories', calories);
     }
+
+    static getItems(type) {
+        return localStorage.getItem(type) === null
+        ? []
+        : JSON.parse(localStorage.getItem(type));
+    }
+
+    static saveMeal(meal) {
+        const meals = Storage.getItems('meals')
+        meals.push(meal);
+        localStorage.setItem('meals', JSON.stringify(meals));
+    }
+
+    static saveWorkout(workout) {
+        const workouts = Storage.getItems('workouts');
+        workouts.push(workout);
+        localStorage.setItem('workouts', JSON.stringify(workouts))
+    }
 }
 
 class App {
     constructor() {
         this.tracker = new CalorieTracker();
+       this.#loadEventListeners();
+        this.tracker.loadItems();
+    }
+
+    #loadEventListeners() {
         document
-            .querySelector('#meal-form')
-            .addEventListener('submit', this.#newItem.bind(this, 'meal'))
+        .querySelector('#meal-form')
+        .addEventListener('submit', this.#newItem.bind(this, 'meal'))
         document
             .querySelector('#workout-form')
             .addEventListener('submit', this.#newItem.bind(this, 'workout'))
