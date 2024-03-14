@@ -22,16 +22,6 @@ class CalorieTracker {
         this.#render()
     }
 
-    removeMeal(id) {
-        const index = this.#meals.findIndex((meal) => meal.id === id);
-        if (index !== -1) {
-            this.#totalCalories -= this.#meals[index].calories
-            Storage.updateTotalCalories(this.#totalCalories);
-            this.#meals.splice(index, 1);
-            this.#render();
-        }
-    }
-
     addWorkout(workout) {
         this.#workouts.push(workout);
         this.#totalCalories -= workout.calories;
@@ -41,12 +31,15 @@ class CalorieTracker {
         this.#render()
     }
 
-    removeWorkout(id) {
-        const index = this.#workouts.findIndex((workout) => workout.id === id);
+    removeItem(id, type) {
+        const items = type ==='meal' ? this.#meals : this.#workouts;
+        const index = items.findIndex((item) => item.id === id);
+
         if (index !== -1) {
-            this.#totalCalories += this.#workouts[index].calories;
+            this.#totalCalories += items[index].calories;
             Storage.updateTotalCalories(this.#totalCalories);
-            this.#workouts.splice(index, 1);
+            items.splice(index, 1);
+            Storage.removeItem(id, 'workouts')
             this.#render();
         }
     }
@@ -195,6 +188,17 @@ class Storage {
         : JSON.parse(localStorage.getItem(type));
     }
 
+    static removeItem(id, type) {
+        const items = Storage.getItems(type);
+        items.forEach((item, index) => {
+            if (item.id === id) {
+                items.splice(index, i);
+            }
+        })
+
+        localStorage.setItem('meals', JSON.stringify(items))
+    }
+
     static saveMeal(meal) {
         const meals = Storage.getItems('meals')
         meals.push(meal);
@@ -271,8 +275,8 @@ class App {
                 const item = e.target.closest('.card');
 
                 type === 'meal'
-                ? this.tracker.removeMeal(item.dataset.id)
-                : this.tracker.removeWorkout(item.dataset.id);
+                ? this.tracker.removeItem(item.dataset.id, 'meal')
+                : this.tracker.removeItem(item.dataset.id, 'workout');
 
                 item.remove();
             }
