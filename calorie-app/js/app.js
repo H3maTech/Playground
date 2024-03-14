@@ -1,6 +1,7 @@
+// TODO: put each class into separate file
 class CalorieTracker {
     #calorieLimit = Storage.getCalorieLimit();
-    #totalCalories = 0;
+    #totalCalories = Storage.getTotalCalories(0);
     #meals = [];
     #workouts = [];
 
@@ -15,6 +16,7 @@ class CalorieTracker {
     addMeal(meal) {
         this.#meals.push(meal);
         this.#totalCalories += meal.calories;
+        Storage.updateTotalCalories(this.#totalCalories);
         this.#displayNewItem(meal, 'meal');
         this.#render()
     }
@@ -23,6 +25,7 @@ class CalorieTracker {
         const index = this.#meals.findIndex((meal) => meal.id === id);
         if (index !== -1) {
             this.#totalCalories -= this.#meals[index].calories
+            Storage.updateTotalCalories(this.#totalCalories);
             this.#meals.splice(index, 1);
             this.#render();
         }
@@ -31,6 +34,7 @@ class CalorieTracker {
     addWorkout(workout) {
         this.#workouts.push(workout);
         this.#totalCalories -= workout.calories;
+        Storage.updateTotalCalories(this.#totalCalories);
         this.#displayNewItem(workout, 'workout');
         this.#render()
     }
@@ -38,7 +42,8 @@ class CalorieTracker {
     removeWorkout(id) {
         const index = this.#workouts.findIndex((workout) => workout.id === id);
         if (index !== -1) {
-            this.#totalCalories += this.#workouts[index].calories
+            this.#totalCalories += this.#workouts[index].calories;
+            Storage.updateTotalCalories(this.#totalCalories);
             this.#workouts.splice(index, 1);
             this.#render();
         }
@@ -165,6 +170,16 @@ class Storage {
 
     static setCalorieLimit(calorieLimit) {
         localStorage.setItem('calorieLimit', calorieLimit);
+    }
+
+    static getTotalCalories(defaultCalories = 0) {
+        return localStorage.getItem('totalCalories') === null
+        ? defaultCalories
+        : +localStorage.getItem('totalCalories');
+    }
+
+    static updateTotalCalories(calories) {
+        localStorage.setItem('totalCalories', calories);
     }
 }
 
