@@ -11,6 +11,8 @@ class CalorieTracker {
         this.#displayCaloriesConsumed();
         this.#displayCaloriesBurned();
         this.#displayCaloriesRemaining()
+
+        document.querySelector('#limit').value = this.#calorieLimit;
     }
 
     addMeal(meal) {
@@ -39,7 +41,7 @@ class CalorieTracker {
             this.#totalCalories += items[index].calories;
             Storage.updateTotalCalories(this.#totalCalories);
             items.splice(index, 1);
-            Storage.removeItem(id, 'workouts')
+            Storage.remove(id, `${type}s`)
             this.#render();
         }
     }
@@ -48,6 +50,7 @@ class CalorieTracker {
         this.#totalCalories = 0;
         this.#meals = [];
         this.#workouts = [];
+        Storage.clearAll()
         this.#render()
     }
 
@@ -188,19 +191,19 @@ class Storage {
         : JSON.parse(localStorage.getItem(type));
     }
 
-    static removeItem(id, type) {
+    static remove(id, type) {
         const items = Storage.getItems(type);
         items.forEach((item, index) => {
             if (item.id === id) {
-                items.splice(index, i);
+                items.splice(index, 1);
             }
         })
 
-        localStorage.setItem('meals', JSON.stringify(items))
+        localStorage.setItem(type, JSON.stringify(items))
     }
 
     static saveMeal(meal) {
-        const meals = Storage.getItems('meals')
+        const meals = Storage.getItems('meals');
         meals.push(meal);
         localStorage.setItem('meals', JSON.stringify(meals));
     }
@@ -208,7 +211,14 @@ class Storage {
     static saveWorkout(workout) {
         const workouts = Storage.getItems('workouts');
         workouts.push(workout);
-        localStorage.setItem('workouts', JSON.stringify(workouts))
+        localStorage.setItem('workouts', JSON.stringify(workouts));
+    }
+
+    static clearAll() {
+        localStorage.removeItem('totalCalories');
+        localStorage.removeItem('meats');
+        localStorage.removeItem('workouts');
+        // localStorage.clear();
     }
 }
 
